@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bibliothèque_de_classe
+﻿namespace BibliothequeDeClasse
 {
-    internal class MonException : Exception
+    public class MonException : Exception
     {
         public MonException(string message) : base(message)
         {

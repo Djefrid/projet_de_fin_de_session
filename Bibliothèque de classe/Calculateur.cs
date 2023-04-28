@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BibliothèqueDeClassenamespace
+namespace BibliothequeDeClasse
 {
     public class Calculateur
     {
@@ -76,12 +76,6 @@ namespace BibliothèqueDeClassenamespace
 
         public int Multiplier(int nbre1, int nbre2)
         {
-           
-            //Console.WriteLine("Entrer un nombre a diviser ");
-            //int nbre1 = VerifierSaisie();
-            //Console.WriteLine("Entrer le nombre par lequel vous vouler multiplier le premier");
-            //int nbre2 = VerifierSaisie();
-
             try
             {
                 int rslt = checked(nbre1 * nbre2);
@@ -105,11 +99,6 @@ namespace BibliothèqueDeClassenamespace
 
         public int Diviser(int nbre1, int nbre2)
         {
-            //Console.WriteLine("Entrer un nombre a diviser ");
-            //int nbre1 = VerifierSaisie();
-            //Console.WriteLine("Entrer le nombre par lequel vous vouler diviser le premier");
-            //int nbre2 = VerifierSaisie();
-
             try
             {
                 if (nbre2 == 0)
@@ -135,58 +124,58 @@ namespace BibliothèqueDeClassenamespace
             }
         }
 
-        public void Exposant()
+        public  double Exposant(double nbre1, double nbre2)
         {
-            Console.WriteLine("Quel nombre vous vouler carluler l'exposant ? :");
-            double nbre1 = VerifierSaisieDouble();
-            Console.WriteLine("A quel nombre d'exopsant vouler vous calculer le nombre precedant ? :");
-            double nbre2 = VerifierSaisieDouble();
-
             try
             {
                 double rslt = checked(Math.Pow(nbre1, nbre2));
 
                 Console.WriteLine($"Le resultat de l'operation est : {rslt}");
+                return rslt;
             }
             catch (ArgumentOutOfRangeException ex)
             {
                 Console.WriteLine("L'argument est hors plage : " + ex.Message);
+                return 0;
             }
             catch (ArgumentException ex)
             {
                 Console.WriteLine("L'argument est invalide : " + ex.Message);
+                return 0;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Une erreur s'est produite : " + ex.Message);
+                return 0;
             }
         }
 
         /// <summary>
         /// fonction qui calcule le logarithme d'un nombre 
         /// </summary>
-        public void Logarithme()
+        public double Logarithme(double nbre)
         {
-            Console.WriteLine("Quel nombre vous vouler carluler le logarithme ? :");
-            double nbre = VerifierSaisieDouble();
-
             try
             {
-                double rslt = checked(Math.Log(nbre));
+                double rslt = checked(Math.Log10(nbre));
 
                 Console.WriteLine($"Le resultat de l'operation est : {rslt}");
+                return rslt;
             }
             catch (ArgumentOutOfRangeException ex)
             {
                 Console.WriteLine("L'argument est hors plage : " + ex.Message);
+                return 0;
             }
             catch (ArgumentException ex)
             {
                 Console.WriteLine("L'argument est invalide : " + ex.Message);
+                return 0;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Une erreur s'est produite : " + ex.Message);
+                return 0;
             }
         }
     }
