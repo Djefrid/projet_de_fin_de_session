@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ElRestaurante
+﻿namespace ElRestaurante
 {
     public enum RareteE
     {
@@ -12,18 +6,18 @@ namespace ElRestaurante
         moyenne,
         eleve
     }
-    
+
     internal class Employe
     {
         public string NomE { get; set; }
         public RareteE RareteEp { get; set; }
         public int Effet { get; set; }
 
-        public Employe(string nomE, RareteE rare, int eff )
+        public Employe(string nomE, RareteE rare, int eff)
         {
             NomE = nomE;
-            RareteEp = rare;  
-            Effet = eff;    
+            RareteEp = rare;
+            Effet = eff;
         }
 
         public override string ToString()

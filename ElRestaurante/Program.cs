@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ElRestaurante
 {
     internal class Program
@@ -16,7 +17,7 @@ namespace ElRestaurante
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Une erreur est survenue lors de la lecture dui fichier: "+ex.Message);
+                Console.WriteLine("Une erreur est survenue lors de la lecture dui fichier: " + ex.Message);
             }
         }
         static void Main(string[] args)
@@ -24,17 +25,14 @@ namespace ElRestaurante
             InitialiserNom();
             Console.WriteLine("Entre le nombre de reservation: ");
             int nbre = Convert.ToInt32(Console.ReadLine());
-            List<Client> Clients = new List<Client>();  
-            for(int i = 0; i<nbre; i++)
-            {
-                Client client = new Client();
-                Clients.Add(client);
-            }
-            Console.WriteLine("Liste des clients");    
+            List<Client> Clients = new List<Client>();
+
+            Console.WriteLine("Liste des clients");
             for (int i = 0; i < nbre; i++)
             {
                 Console.WriteLine(Clients[i].ToString());
             }
+            // faire gerer restaurant
         }
     }
 }

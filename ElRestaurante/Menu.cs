@@ -26,7 +26,7 @@ namespace ElRestaurante
         public override string ToString()
         {
             string info = $"---MENU--- ";
-            for (int i = 0; i <Plats.Count(); i++)
+            for (int i = 0; i < Plats.Count(); i++)
             {
                 info += $"{Plats[i].NomP} \n";
             }

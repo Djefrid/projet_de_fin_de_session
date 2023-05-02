@@ -14,7 +14,7 @@ namespace ElRestaurante
         public double TPS { get; set; }
         public double TVQ { get; set; }
 
-       
+
         public Facture(string date, Client clientF, Plat platF)
         {
             Date = date;
@@ -26,7 +26,7 @@ namespace ElRestaurante
 
         public double CalculMontantPlat()
         {
-                 
+
             double total = TPS + TVQ + PlatF.PrixV;
             return total;
         }
@@ -34,7 +34,7 @@ namespace ElRestaurante
         public override string ToString()
         {
             string info = "----FACTURE---- \n";
-            info += $"Date: {Date} \n Nom du client:{ClientF.NomC} \n Prix du plat: {PlatF.PrixV} \n TPS: {TPS} \n TVQ: {TVQ} \n Montant total: {CalculMontantPlat()} $";
+            info += $"Date: {Date} \n Nom du client:{ClientF.NomC} \n Plat: {PlatF.NomP} \n Prix du plat: {PlatF.PrixV} \n TPS: {TPS} \n TVQ: {TVQ} \n Montant total: {CalculMontantPlat()} $";
             return info;
         }
     }

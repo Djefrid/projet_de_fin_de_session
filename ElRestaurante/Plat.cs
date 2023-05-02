@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ElRestaurante
 {
-    public enum RareteP 
+    public enum RareteP
     {
         basse,
         moyenne,
@@ -20,11 +20,11 @@ namespace ElRestaurante
         public RareteP RaretePl { get; set; }
         public List<Ingredient> Ingredients { get; set; }
 
-        public Plat(string nomp, double prixA, double prixV, RareteP rare )
+        public Plat(string nomp, double prixA, double prixV, RareteP rare)
         {
             NomP = nomp;
-            PrixA = prixA;  
-            PrixV = prixV;  
+            PrixA = prixA;
+            PrixV = prixV;
             RaretePl = rare;
             Ingredients = new List<Ingredient>();
         }
@@ -35,14 +35,14 @@ namespace ElRestaurante
         }
         public void SupprimerIngredient(Ingredient ing)
         {
-            Ingredients.Remove(ing);    
+            Ingredients.Remove(ing);
         }
 
         public override string ToString()
         {
-            string info =$"Nom: {NomP}, prix achat:{PrixA}, prix vente: {PrixV} , Rarete: {RaretePl}" +
+            string info = $"Nom: {NomP}, prix achat:{PrixA}, prix vente: {PrixV} , Rarete: {RaretePl}" +
                             $"\n Liste des ingredients: ";
-            for(int i=0; i<Ingredients.Count(); i++)
+            for (int i = 0; i < Ingredients.Count(); i++)
             {
                 info += $"{Ingredients[i].NomI} \n";
             }

@@ -3,26 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 using Newtonsoft.Json;
 
 namespace ElRestaurante
 {
-    public enum Qualite 
+    public enum Qualite
     {
         Moyenne,
         Bonne,
         Excellente
-    } 
-     class Ingredient
+    }
+    class Ingredient
     {
-        public string NomI { get; set; } 
+        public string NomI { get; set; }
         public int Calorie { get; set; }
         public Qualite QualiteIng { get; set; }
-        public double Prix { get; set;}       
+        public double Prix { get; set; }
 
         [JsonConstructor]
-        public Ingredient (string nomI, int calo, string qlt, double prix)
+        public Ingredient(string nomI, int calo, string qlt, double prix)
         {
             NomI = nomI;
             Calorie = calo;
@@ -34,7 +33,7 @@ namespace ElRestaurante
                 QualiteIng = Qualite.Excellente;
             else
                 QualiteIng = Qualite.Moyenne;
-            Prix = prix; 
+            Prix = prix;
         }
 
         public override string ToString()
