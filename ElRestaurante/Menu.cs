@@ -10,10 +10,19 @@ namespace ElRestaurante
     {
         public List<Plat> Plats { get; set; }
 
-        public Menu()        {
-            Plats = new List<Plat>();
+        public Menu()
+        {
+            Plats = new List<Plat>(); // lors de l achat de mes plats dans gererRestaurant, je vais venir les inserer  ici
         }
 
+        public void AjouterPlat(Plat plat)
+        {
+            Plats.Add(plat);
+        }
+        public void SupprimerPlat(Plat plat)
+        {
+            Plats.Remove(plat);
+        }
         public override string ToString()
         {
             string info = $"---MENU--- ";

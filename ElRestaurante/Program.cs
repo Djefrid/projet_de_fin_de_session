@@ -22,6 +22,19 @@ namespace ElRestaurante
         static void Main(string[] args)
         {
             InitialiserNom();
+            Console.WriteLine("Entre le nombre de reservation: ");
+            int nbre = Convert.ToInt32(Console.ReadLine());
+            List<Client> Clients = new List<Client>();  
+            for(int i = 0; i<nbre; i++)
+            {
+                Client client = new Client();
+                Clients.Add(client);
+            }
+            Console.WriteLine("Liste des clients");    
+            for (int i = 0; i < nbre; i++)
+            {
+                Console.WriteLine(Clients[i].ToString());
+            }
         }
     }
 }

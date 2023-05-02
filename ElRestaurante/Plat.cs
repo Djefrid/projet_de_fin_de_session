@@ -15,18 +15,27 @@ namespace ElRestaurante
     internal class Plat
     {
         public string NomP { get; set; }
-        public float PrixA { get; set; }
-        public float PrixV { get; set; }
+        public double PrixA { get; set; }
+        public double PrixV { get; set; }
         public RareteP RaretePl { get; set; }
         public List<Ingredient> Ingredients { get; set; }
 
-        public Plat(string nomp, float prixA, float prixV, RareteP rare )
+        public Plat(string nomp, double prixA, double prixV, RareteP rare )
         {
             NomP = nomp;
             PrixA = prixA;  
             PrixV = prixV;  
             RaretePl = rare;
             Ingredients = new List<Ingredient>();
+        }
+
+        public void AjouterIngerdient(Ingredient ing)
+        {
+            Ingredients.Add(ing);
+        }
+        public void SupprimerIngredient(Ingredient ing)
+        {
+            Ingredients.Remove(ing);    
         }
 
         public override string ToString()

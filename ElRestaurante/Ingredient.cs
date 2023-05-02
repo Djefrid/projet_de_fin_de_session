@@ -19,10 +19,10 @@ namespace ElRestaurante
         public string NomI { get; set; } 
         public int Calorie { get; set; }
         public Qualite QualiteIng { get; set; }
-        public float Prix { get; set;}       
+        public double Prix { get; set;}       
 
         [JsonConstructor]
-        public Ingredient (string nomI, int calo, string qlt, float prix)
+        public Ingredient (string nomI, int calo, string qlt, double prix)
         {
             NomI = nomI;
             Calorie = calo;
