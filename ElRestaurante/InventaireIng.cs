@@ -19,7 +19,7 @@ namespace ElRestaurante
 
         public override string ToString()
         {
-            string info = $"Nom ingredient: {Lingredient.NomI} \n Quantite: {Quantite} "; 
+            string info = $"Nom ingredient: {Lingredient.NomI} \n Quantité acheté: {Quantite} "; 
             return info;
         }
     }

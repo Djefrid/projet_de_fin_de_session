@@ -63,21 +63,23 @@ namespace ElRestaurante
             {
                 Console.WriteLine("\n ---------- MENU ----------", Color.Green);
                 Console.WriteLine("----------------------------", Color.Green);
-                Console.WriteLine("1- Regarder statut restaurant");
-                Console.WriteLine("2- Changer le statut du restaurant");
-                Console.WriteLine("3- Réservation");
-                Console.WriteLine("4- Afficher le menu du jour");
-                Console.WriteLine("5- Changer le menu du jour");
-                Console.WriteLine("6- Afficher commandes");
-                Console.WriteLine("7- Servir Clients");
-                Console.WriteLine("8- Acheter un nouveau plat");
-                Console.WriteLine("9- Quitter");
+                Console.WriteLine("a- Regarder statut restaurant");
+                Console.WriteLine("b- Changer le statut du restaurant");
+                Console.WriteLine("c- Réservation");
+                Console.WriteLine("d- Afficher le menu du jour");
+                Console.WriteLine("e- Changer le menu du jour");
+                Console.WriteLine("f- Afficher commandes");
+                Console.WriteLine("g- Servir Clients");
+                Console.WriteLine("h- Acheter un nouveau plat");
+                Console.WriteLine("i- Acheter des ingrédients");
+                Console.WriteLine("j- Afficher les ingrédients achetés");
+                Console.WriteLine("k- Quitter");
                 char choix = Console.ReadKey().KeyChar;
                 Console.WriteLine();
                 try
                 {
 
-                    while (choix != '1' && choix != '2' && choix != '3' && choix != '4' && choix != '5' && choix != '6' && choix != '7' && choix != '8' && choix != '9')
+                    while (choix != 'a' && choix != 'b' && choix != 'c' && choix != 'd' && choix != 'e' && choix != 'f' && choix != 'g' && choix != 'h' && choix != 'i' && choix != 'j')
                     {
 
                         throw new Exception("\n #Choix invalide#");
@@ -90,13 +92,13 @@ namespace ElRestaurante
                 }
                 switch (choix)
                 {
-                    case '1':
+                    case 'a':
                         Console.WriteLine("Le restaurant est: " + resto.StatutR);
                         break;
-                    case '2':
+                    case 'b':
                         resto.ChangerStatutRestaurant();
                         break;
-                    case '3':
+                    case 'c':
                         if(resto.StatutR == Statut.Open)
                         {
                             Console.WriteLine("Entrez le nombre de reservation: ");
@@ -111,25 +113,34 @@ namespace ElRestaurante
                         }
 
                         break;
-                    case '4':
+                    case 'd':
                         Console.WriteLine(resto.MenuR.ToString());   
                         break;
-                    case '5':
+                    case 'e':
                         resto.MenuR.ChangerMenu();
                         Console.WriteLine("Voici le nouveau menu du jour: \n", color:Color.Yellow);
                         Console.WriteLine(resto.MenuR.ToString());
                             break;
-                    case '6':
+                    case 'f':
                         if (nbreR != 0)
                             resto.AfficherCommande();
                         else
                             Console.WriteLine("\n Nous n'avons pas de commande", color:Color.Red);
                         break;
-                    case '7':
+                    case 'g':
                         resto.ServirClients();
                         break;
-                    case '8':
+                    case 'h':
                         Gestresto.AfficherPlatEnVente();
+                        Console.WriteLine("Entre le numero du plat à acheter:");
+                        int num = VerifierNbre();
+                        Gestresto.AchatPlat(num-1);
+                        break;
+                    case 'i':
+                        Gestresto.AcheterIngredient();
+                        break;
+                    case 'j':
+                        Gestresto.AfficherIngredientAcheter();
                         break;
                 }
 

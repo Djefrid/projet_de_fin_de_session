@@ -42,7 +42,15 @@ namespace ElRestaurante
         public void AchatPlat(int numP)
         {
             ListPlatDispo.Add(ListPlatEnVente[numP]);
-            Console.WriteLine(ListPlatEnVente[numP].ToString() +"viens d'être acheter :)", color:Color.Yellow);
+            Console.WriteLine(ListPlatEnVente[numP].ToString() +"\n viens d'être acheter :)", color:Color.Yellow);
+        }
+
+        public void AfficherIngredientAcheter()
+        {
+            foreach (InventaireIng inv in InventaireIngs)
+            {
+                Console.WriteLine(inv.ToString(),color: Color.Yellow);
+            }
         }
 
         public void EngagerEmploye(string nomE, RareteE rare, int eff)
@@ -108,7 +116,7 @@ namespace ElRestaurante
                 }
 
             }
-            InventaireIng inv = new InventaireIng(ListIngredientDispo[nbre],qt); 
+            InventaireIng inv = new InventaireIng(ListIngredientDispo[nbre-1],qt); 
             InventaireIngs.Add(inv);
 
         }
