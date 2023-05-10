@@ -9,10 +9,17 @@ namespace ElRestaurante
     internal class Menu
     {
         public List<Plat> Plats { get; set; }
-
+        static Random rnd = new Random();   
         public Menu()
         {
-            Plats = new List<Plat>(); // lors de l achat de mes plats dans gererRestaurant, je vais venir les inserer  ici
+            List<Plat> list = JsonFileLoader.ChargerFichier<List<Plat>>("json_plat.json");
+            Plats = new List<Plat>();
+            for(int i=0 ; i < (list.Count )/2; i++)
+            {
+                
+                Plats.Add(list[i]);
+            }
+            
         }
 
         public void AjouterPlat(Plat plat)
@@ -23,12 +30,22 @@ namespace ElRestaurante
         {
             Plats.Remove(plat);
         }
+        public void ChangerMenu()
+        {
+            List<Plat> list = JsonFileLoader.ChargerFichier<List<Plat>>("json_plat.json");
+            Plats = new List<Plat>();
+            for (int i = ((list.Count)/2)-1; i < list.Count; i++)
+            {
+
+                Plats.Add(list[i]);
+            }
+        }
         public override string ToString()
         {
-            string info = $"---MENU--- ";
+            string info = $"---MENU DU JOUR--- \n";
             for (int i = 0; i < Plats.Count(); i++)
             {
-                info += $"{Plats[i].NomP} \n";
+                info += $"# {Plats[i].NomP} \n";
             }
             return info;
         }

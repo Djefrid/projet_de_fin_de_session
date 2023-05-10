@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+using Figgle;
+using Console = Colorful.Console;
 
 namespace ElRestaurante
 {
@@ -22,33 +25,55 @@ namespace ElRestaurante
         public List<Facture> Factures { get; set; }
         public double RevenueTotal { get; set; }
         static Random rand = new Random();
-        
 
-        public Restaurant(string nomR, Statut statutR,int nbreR, Menu menuR)
+
+        public Restaurant(string nomR, Statut statutR, int nbreR)
         {
             NomR = nomR;
             StatutR = statutR;
             Clients = new List<Client>();
-            InsererListeClient(Clients);
-            MenuR = menuR;
-           
+            NbreReserv = nbreR;
+            MenuR = new Menu();
+            Factures = new List<Facture>(); 
+
         }
 
-         public void InsererListeClient(List<Client> Cls)
-         {
+        public void InsererListeClient(List<Client> Cls)
+        {
 
-             for (int i = 0; i < NbreReserv; i++)
-             {
-                 Client client = new Client();
-                 Cls.Add(client);
-                
-             }
-           
-         }
+            for (int i = 0; i < NbreReserv; i++)
+            {
+                Client client = new Client();
+                Cls.Add(client);
+
+            }
+
+        }
+
+        public void AfficherClient()
+        {
+            InsererListeClient(Clients);
+            for (int i = 0; i < NbreReserv; i++)
+            {
+                Console.WriteLine(Clients[i].ToString());
+                int nbre = rand.Next(1, 4);
+                Factures.Add( new Facture(Clients[i], MenuR.Plats[nbre]));
+            }
+        }
+
+
+        public void AfficherClientEtFacture()
+        {
+            InsererListeClient(Clients);
+            for (int i = 0; i < NbreReserv; i++)
+            {
+                Console.WriteLine(Clients[i].ToString());
+            }
+        }
 
         public void ChangerStatutRestaurant()
         {
-            if(StatutR == Statut.Open)
+            if (StatutR == Statut.Open)
             {
                 StatutR = Statut.Close;
                 Console.WriteLine(" \n Fermeture du restaurant");
@@ -60,27 +85,18 @@ namespace ElRestaurante
             }
         }
 
-        public void PasserCommande()
-        {
-            DateTime Ladate = DateTime.Now;
-            string date = Convert.ToString(Ladate);
-            for(int i = 0; i < NbreReserv; i++)
-            {
-                int nbre = rand.Next(1, 5);
-                Factures[i] = new Facture(date, Clients[i], MenuR.Plats[nbre]);
-            }
-        }
+
 
         public void AfficherCommande()
         {
-            RevenueTotal = 0;   
+            RevenueTotal = 0;
             Console.WriteLine("Liste des commandes: \n");
-            for(int i = 0; i < NbreReserv; i++)
+            for (int i = 0; i < NbreReserv; i++)
             {
                 Console.WriteLine(Factures[i].ToString());
                 RevenueTotal += Factures[i].CalculMontantPlat();
             }
-            Console.WriteLine("Pour un montant total de: "+ RevenueTotal+" $");
+            Console.WriteLine("Pour un montant total de: " + RevenueTotal + " $");
         }
 
         public void ServirClients()
@@ -88,7 +104,7 @@ namespace ElRestaurante
             for (int i = 0; i < NbreReserv; i++)
             {
                 Clients[i].StatutCl = StatutC.servi;
-                
+                Console.WriteLine(Clients[i].NomC+" a été servi ;)", color:Color.Yellow);
             }
         }
 
@@ -99,7 +115,7 @@ namespace ElRestaurante
 
         public override string ToString()
         {
-            string info = $"Nom restaurant: {NomR}\n Statut: {StatutR} \n Nombre de Reservation: {NbreReserv}"; 
+            string info = $"Nom restaurant: {NomR}\n Statut: {StatutR} \n Nombre de Reservation: {NbreReserv}";
             return info;
         }
     }

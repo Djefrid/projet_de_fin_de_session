@@ -15,9 +15,10 @@ namespace ElRestaurante
         public double TVQ { get; set; }
 
 
-        public Facture(string date, Client clientF, Plat platF)
+        public Facture( Client clientF, Plat platF)
         {
-            Date = date;
+            DateTime now = DateTime.Now;
+            Date = now.ToString("dd/MM/yyyy"); 
             ClientF = clientF;
             PlatF = platF;
             TPS = platF.PrixV * 0.05;
@@ -33,7 +34,7 @@ namespace ElRestaurante
 
         public override string ToString()
         {
-            string info = "----FACTURE---- \n";
+            string info = "\n ----FACTURE---- \n";
             info += $"Date: {Date} \n Nom du client:{ClientF.NomC} \n Plat: {PlatF.NomP} \n Prix du plat: {PlatF.PrixV} \n TPS: {TPS} \n TVQ: {TVQ} \n Montant total: {CalculMontantPlat()} $";
             return info;
         }

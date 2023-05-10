@@ -21,15 +21,15 @@ namespace ElRestaurante
         public double Prix { get; set; }
 
         [JsonConstructor]
-        public Ingredient(string nomI, int calo, string qlt, double prix)
+        public Ingredient(string nom, int calories, string qualite, double prix)
         {
-            NomI = nomI;
-            Calorie = calo;
-            if (qlt.Contains("Moyenne"))
+            NomI = nom;
+            Calorie = calories;
+            if (qualite.Contains("Moyenne"))
                 QualiteIng = Qualite.Moyenne;
-            else if (qlt.Contains("Bonne"))
+            else if (qualite.Contains("Bonne"))
                 QualiteIng = Qualite.Bonne;
-            else if (qlt.Contains("Excelente"))
+            else if (qualite.Contains("Excelente"))
                 QualiteIng = Qualite.Excellente;
             else
                 QualiteIng = Qualite.Moyenne;
@@ -41,8 +41,6 @@ namespace ElRestaurante
             string info = $"Nom: {NomI},  Calorie: {Calorie}, Qualité ingredient: {QualiteIng}, Prix:{Prix} ";
             return info;
         }
-
-
 
     }
 }
