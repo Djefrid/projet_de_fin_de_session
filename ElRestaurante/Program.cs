@@ -71,15 +71,18 @@ namespace ElRestaurante
                 Console.WriteLine("f- Afficher commandes");
                 Console.WriteLine("g- Servir Clients");
                 Console.WriteLine("h- Acheter un nouveau plat");
-                Console.WriteLine("i- Acheter des ingrédients");
-                Console.WriteLine("j- Afficher les ingrédients achetés");
-                Console.WriteLine("k- Quitter");
-                char choix = Console.ReadKey().KeyChar;
+                Console.WriteLine("i- Ajouter un plat au menu");
+                Console.WriteLine("j- Supprimer un plat du menu");
+                Console.WriteLine("k- Acheter des ingrédients");
+                Console.WriteLine("l- Afficher la liste des employés");
+                Console.WriteLine("m- Engager un employé");
+                Console.WriteLine("q- Quitter");
+                char choix = char.ToLower(Console.ReadKey().KeyChar);
                 Console.WriteLine();
                 try
                 {
 
-                    while (choix != 'a' && choix != 'b' && choix != 'c' && choix != 'd' && choix != 'e' && choix != 'f' && choix != 'g' && choix != 'h' && choix != 'i' && choix != 'j')
+                    while (choix != 'a' && choix != 'b' && choix != 'c' && choix != 'd' && choix != 'e' && choix != 'f' && choix != 'g' && choix != 'h' && choix != 'i' && choix != 'j' && choix != 'k' && choix != 'l' && choix != 'm' && choix != 'q')
                     {
 
                         throw new Exception("\n #Choix invalide#");
@@ -137,10 +140,33 @@ namespace ElRestaurante
                         Gestresto.AchatPlat(num-1);
                         break;
                     case 'i':
-                        Gestresto.AcheterIngredient();
+                        for (int i = 0; i < Gestresto.ListPlatDispo.Count; i++)
+                        {
+                            Console.WriteLine(Gestresto.ListPlatDispo[i].ToString());
+                        }                     
+                        Console.WriteLine("Entre le nom du plat que tu souhaite ajouter au menu: ");
+                        string nomp = Console.ReadLine();
+                        Gestresto.AjouterPlatMenu(nomp);
                         break;
                     case 'j':
+                        Console.WriteLine(resto.MenuR.ToString());
+                        Console.WriteLine("Entre le nom du plat que tu souhaite supprimer du menu : ");
+                        string nomP = Console.ReadLine();
+                        break;
+                    case 'k':
+                        Gestresto.AcheterIngredient();
+                        Console.WriteLine("\n ---Liste des ingrédients achetés--- \n", color:Color.Green);
                         Gestresto.AfficherIngredientAcheter();
+                        Console.WriteLine($"\n Le montant total est de : {Gestresto.CalculerPrixAchatTotal()} $", color: Color.Magenta);
+                        break;
+                    case 'l':
+                        Gestresto.AfficherListeEmploye();
+                        break;
+                    case 'm':
+                        Gestresto.EngagerEmploye(); 
+                        break;
+                    default:
+                        tours = false;
                         break;
                 }
 

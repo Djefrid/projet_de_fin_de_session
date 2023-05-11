@@ -22,14 +22,7 @@ namespace ElRestaurante
             
         }
 
-        public void AjouterPlat(Plat plat)
-        {
-            Plats.Add(plat);
-        }
-        public void SupprimerPlat(Plat plat)
-        {
-            Plats.Remove(plat);
-        }
+
         public void ChangerMenu()
         {
             List<Plat> list = JsonFileLoader.ChargerFichier<List<Plat>>("json_plat.json");

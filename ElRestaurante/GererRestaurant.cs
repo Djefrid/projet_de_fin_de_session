@@ -21,8 +21,13 @@ namespace ElRestaurante
 
         public GererRestaurant(Restaurant resto) // completer le constructeur after la finalisation du menu et des ingredients
         {
+            LeMenu = new Menu();
             LeRestaurant = resto;
             Employes = new List<Employe>();
+            Employes.Add(new Employe("Eric fortin", RareteE.moyenne, 6));
+            Employes.Add(new Employe("Yan boily", RareteE.eleve, 10));
+            Employes.Add(new Employe("Jaber laffy", RareteE.basse, 3));
+            Employes.Add(new Employe("Sonia gagnon", RareteE.eleve, 10));
             ListPlatEnVente = JsonFileLoader.ChargerFichier<List<Plat>>("json_stockPlats.json");
             InventaireIngs = new List<InventaireIng>();
             Initialiser();
@@ -31,6 +36,59 @@ namespace ElRestaurante
         {
             ListIngredientDispo = JsonFileLoader.ChargerFichier<List<Ingredient>>("json_ingredient.json");
             ListPlatDispo = JsonFileLoader.ChargerFichier<List<Plat>>("json_plat.json");
+        }
+
+        public void AfficherListeEmploye()
+        {
+            foreach(Employe employe in Employes)
+            {
+                Console.WriteLine(employe.ToString(), color: Color.Yellow);
+            }
+        }
+        public void AjouterPlatMenu(string nomplat)
+        {
+            bool find = false;
+            for(int i =0; i<ListPlatDispo.Count; i++)
+            {
+                if (ListPlatDispo[i].NomP == nomplat)
+                {
+                    LeMenu.Plats.Add(ListPlatDispo[i]); 
+                    find = true;
+                }
+
+            }
+            if (!find)
+            {
+                Console.WriteLine("Désolé nous n'avons pas encore acheter ce plat", color: Color.Red);
+            }
+            else 
+            {
+                Console.WriteLine("Le plat vient d'être ajouter au menu :)", color: Color.Green);
+            }
+
+        }
+        public void SupprimerPlat(string nomPlat)
+        {
+            for (int i = 0; i < LeMenu.Plats.Count; i++)
+            {
+                if (LeMenu.Plats[i].NomP == nomPlat)
+                {
+                    LeMenu.Plats.Remove(LeMenu.Plats[i]);
+                }
+                else
+                {
+                    Console.WriteLine("Ce plat n'est pas dans le menu", color: Color.Red);
+                }
+            }
+        }
+        public double CalculerPrixAchatTotal()
+        {
+            double total = 0;
+            foreach (InventaireIng prix in InventaireIngs)
+            {
+                total += prix.PrixAchat;
+            }
+            return total;
         }
         public void AfficherPlatEnVente()
         {
@@ -53,9 +111,16 @@ namespace ElRestaurante
             }
         }
 
-        public void EngagerEmploye(string nomE, RareteE rare, int eff)
+        public void EngagerEmploye()
         {
-            Employe emp = new Employe(nomE, rare, eff);
+            
+            Console.WriteLine("Entre le nom de l'employé: ");
+            string nomE = Console.ReadLine();
+            Console.WriteLine("Entre la rarete de l'employé: (0 pour basse, 1 pour moyenne et 2 pour faible)");
+            int rare = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Entre l'effet  de l'employé: ");
+            int eff = Convert.ToInt32(Console.ReadLine());
+            Employe emp = new Employe(nomE, (RareteE)rare, eff);
             Employes.Add(emp);  
         }
 
