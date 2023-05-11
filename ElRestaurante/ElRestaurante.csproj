@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Colorful.Console, Version=1.2.15.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Bibliothèque de classe\packages\Colorful.Console.1.2.15\lib\net461\Colorful.Console.dll</HintPath>
+      <HintPath>..\ProjetPartie1\packages\Colorful.Console.1.2.15\lib\net461\Colorful.Console.dll</HintPath>
     </Reference>
     <Reference Include="Figgle, Version=0.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Bibliothèque de classe\packages\Figgle.0.5.1\lib\netstandard2.0\Figgle.dll</HintPath>
+      <HintPath>..\ProjetPartie1\packages\Figgle.0.5.1\lib\netstandard2.0\Figgle.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\Bibliothèque de classe\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
